@@ -55,25 +55,21 @@ const HomePageHeader = () => {
 
 
 const Domain = ({ name, category, interstitial, premium }) => {
+  const classes = useStyles();
+
   if (!name) return <div />;
   return (
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <h5>{name}</h5>
-          </td>
-          <td>
-            <h5>{category}</h5>
-          </td>
-          <td>
-            <h4>{interstitial}</h4>
-          </td>
-          <td>
-            <p>{premium}</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableBody>
+          <TableRow>
+            <TableCell align='left'>{name}</TableCell>
+            <TableCell align='left'>{category}</TableCell>
+            <TableCell align='left'>{interstitial}</TableCell>
+            <TableCell align='left'>{premium}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };

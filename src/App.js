@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
-import { Supply } from "./Supply"
+import { Supply } from "./Supply.js"
 
 
 
