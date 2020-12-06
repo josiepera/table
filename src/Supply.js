@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   Table,
   TableBody,
@@ -13,62 +13,61 @@ import {
 import { supplyData } from "./data";
 
 
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 500,
   },
 });
 
 
+
 export const Supply = () => {
-  return (
-    <>
-      <HomePageHeader />
-      <div className="supply-container">
-        {supplyData.map((data, key) => {
-          return (
-            <div key={key}>
-              <Domain
-                key={key}
-                name={data.Name}
-                category={data.Category}
-                interstitial={data.Interstitial}
-                premium={data.Premium}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </>
-  );
-};
-
-
-const HomePageHeader = () => {
-  return (
-    <header className="header">
-      <h2>Your PSL</h2>
-    </header>
-  );
-};
-
-
-const Domain = ({ name, category, interstitial, premium }) => {
   const classes = useStyles();
 
-  if (!name) return <div />;
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
+      <TableHead>
+        <TableRow>
+          <StyledTableCell align="left">App Bundle</StyledTableCell>
+          <StyledTableCell align="left">Name</StyledTableCell>
+          <StyledTableCell>Category</StyledTableCell>
+          <StyledTableCell align="center">Interstitial</StyledTableCell>
+          <StyledTableCell align="center">Premium</StyledTableCell>
+        </TableRow>
+      </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell align='left'>{name}</TableCell>
-            <TableCell align='left'>{category}</TableCell>
-            <TableCell align='left'>{interstitial}</TableCell>
-            <TableCell align='left'>{premium}</TableCell>
-          </TableRow>
+          {supplyData.map((data,key) => (
+            <StyledTableRow key={key}>
+              <StyledTableCell component="th" scope="row" width="350">
+                {data.app_bundle}
+              </StyledTableCell>
+              <StyledTableCell align="left" width="300">{data.name}</StyledTableCell>
+              <StyledTableCell align="left" width="300">{data.category}</StyledTableCell>
+              <StyledTableCell align="center">{data.interstitial}</StyledTableCell>
+              <StyledTableCell align="center">{data.premium}</StyledTableCell>
+            </StyledTableRow>
+          ))}
         </TableBody>
+
       </Table>
     </TableContainer>
   );
