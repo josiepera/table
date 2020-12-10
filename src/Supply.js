@@ -61,7 +61,7 @@ export const Supply = () => {
                 {data.app_bundle}
               </StyledTableCell>
               <StyledTableCell align="left" width="300">{data.name}</StyledTableCell>
-              <StyledTableCell align="left" width="300">{data.category}</StyledTableCell>
+              <StyledTableCell align="left" width="150">{data.category}</StyledTableCell>
               <StyledTableCell align="center">{data.interstitial}</StyledTableCell>
               <StyledTableCell align="center">{data.premium}</StyledTableCell>
             </StyledTableRow>
