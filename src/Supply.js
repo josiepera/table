@@ -44,7 +44,7 @@ export const Supply = () => {
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table className={classes.table} size="small" aria-label="a dense table">
       <TableHead>
         <TableRow>
           <StyledTableCell align="left">App Bundle</StyledTableCell>
